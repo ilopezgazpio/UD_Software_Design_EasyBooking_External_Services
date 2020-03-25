@@ -6,7 +6,7 @@ from src.main.python.User import User
 class Interface_Authentication ( ABC ):
 
     @abstractmethod
-    def log_in( self, user: User, password: str) -> bool:
+    def log_in( self, email: str, password: str) -> bool:
         """
         Method to log in an existing user
         Returns boolean, True <=> Correct login
@@ -24,7 +24,7 @@ class Interface_Authentication ( ABC ):
 
 
     @abstractmethod
-    def change_password(self, user: User, password_old: str, password_new: str) -> bool:
+    def change_password(self, email: str, password_old: str, password_new: str) -> bool:
         """
         Method to update password
         Returns boolean, True <=> Correct update
@@ -33,7 +33,7 @@ class Interface_Authentication ( ABC ):
 
 
     @abstractmethod
-    def delete_user( self, user: User, password: str) -> bool:
+    def delete_user( self, email: str, password: str) -> bool:
         """
         Method to delete an existing user
         Returns boolean, True <=> Correct deletion
