@@ -1,17 +1,36 @@
 #!/usr/bin/python3                                                                                                                                                                                                                           # -*- coding: utf-8 -*-
-
 import abc
+from abc import ABC, abstractmethod
+from src.main.python.User.UserAccount import UserAccount
 
-class Interface_Payments ( metaclass = abc.ABCMeta):
+class Interface_Payments ( ABC ):
 
-    @abc.abstractmethod
-    def make_payment( self,  account : int, total_ammount : float, concept : str) -> str:
+    @abstractmethod
+    def make_payment(self, email: str, total_amount : float, concept : str) -> str:
         """
-        Method to make a payment an update users account accordingly.
-
-        Returns payment identifier
+        Method to log in an existing user
+        Returns receipt id
         """
         pass
+
+    @abstractmethod
+    def create_user(self, user: UserAccount, currency : float) -> bool:
+        """
+        Method to create a new user with some currency
+        Returns boolean, True <=> Correct update
+        """
+        pass
+
+    @abstractmethod
+    def update_currency(self, email: str, currency: float) -> bool:
+        """
+        Method to update currency of user
+        Returns boolean, True <=> Correct update
+        """
+        pass
+
+
+
 
 
 
