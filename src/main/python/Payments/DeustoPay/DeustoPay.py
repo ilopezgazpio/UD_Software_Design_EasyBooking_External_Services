@@ -26,6 +26,9 @@ class DeustoPay (Interface_Payments):
         Method to log in an existing user
         Returns receipt id
         """
+        if not isinstance(total_amount, (int, float)):
+            return False
+
         if self.user_exists(email):
             if self.__users[email][0] >= total_amount:
                 self.__users[email][0] -= total_amount
@@ -50,6 +53,10 @@ class DeustoPay (Interface_Payments):
         Method to update currency of user
         Returns boolean, True <=> Correct update
         """
+
+        if not isinstance(currency, (int, float)):
+            return False
+
         if self.user_exists(email):
             self.__users[email][0] += currency
             return True
