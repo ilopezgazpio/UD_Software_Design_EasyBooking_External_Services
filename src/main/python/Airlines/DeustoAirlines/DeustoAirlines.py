@@ -56,6 +56,7 @@ class DeustoAirlines (Interface_Airlines):
         ]
 
         """
+    
         if kwparams:
             airport_departure_name = kwparams.get('airport_departure_name')
             airport_arrival_name = kwparams.get('airport_arrival_name')
@@ -63,7 +64,14 @@ class DeustoAirlines (Interface_Airlines):
             price = kwparams.get('price')
             departure_date = kwparams.get('departure_date')
 
-            if ( airport_departure_name is not None and
+            if ( airport_departure_name is None and
+                    airport_arrival_name is None and
+                    free_seats is None and
+                    price is None and
+                    departure_date is None):
+                return list(self.__flights.values())
+
+            elif ( airport_departure_name is not None and
                     airport_arrival_name is not None and
                     free_seats is not None and
                     price is not None and
@@ -105,7 +113,12 @@ class DeustoAirlines (Interface_Airlines):
 
 
     def with_time(self, flight, kwparams):
-        parsed_time = datetime.strptime(kwparams['departure_date'], '%Y/%m/%d %H:%M:%S')
+        try:
+            parsed_time = datetime.strptime(kwparams['departure_date'], '%Y/%m/%d %H:%M:%S')
+        except:
+            print("Raised exception - invalid date string")
+            return False
+
         return parsed_time <= flight.get_departure_date() <= parsed_time + timedelta(days=10)
 
 

@@ -19,7 +19,7 @@ class Interface_Airlines ( ABC ):
 
             price: float,
 
-            departure_date : datetime
+            departure_date : str
 
         ]
         Returns a list of flights according to the filters passed
