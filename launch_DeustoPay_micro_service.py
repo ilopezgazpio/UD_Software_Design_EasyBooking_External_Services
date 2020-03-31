@@ -12,6 +12,7 @@ from flask_restful import reqparse, abort, Api, Resource
 from src.main.python.Payments.DeustoPay.DeustoPay import DeustoPay
 from src.main.python.User.UserAccount import UserAccount
 
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -51,47 +52,47 @@ class MicroServices(Resource):
 
     # curl http://127.0.0.1:5000/
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status' : 'Working'}), 201
 
 
 class Pay_MicroService_Make_Payment (Resource):
 
     # curl http://127.0.0.1:5000/Payments/Make_payment
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status' : 'Working'}), 201
 
     # curl http://127.0.0.1:5000/Payments/Make_payment -d '{"email":"inigo.lopezgazpio@deusto.es", "total_amount":"20.5", "concept":"Hello World Payment" }' -X POST -H "Content-Type: application/json" -v
     def post(self):
         user_args = user_parser.parse_args()
         result = deusto_pay.make_payment(user_args.email, user_args.total_amount, user_args.concept)
-        return {'Result': result}, 201
+        return json.dumps({'Result' : result}), 201
 
 
 class Pay_MicroService_Create_User (Resource):
 
     # curl http://127.0.0.1:5000/Payments/Create_user
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status': 'Working'}), 201
 
     # curl http://127.0.0.1:5000/Payments/Create_user -d '{"name":"Inigo", "last_name":"Lopez-Gazpio", "email":"inigo.lopezgazpio@deusto.es", "currency":"20.5"}' -X POST -H "Content-Type: application/json" -v
     def post(self):
         user_args = user_parser.parse_args()
         user = UserAccount(user_args.name, user_args.last_name, user_args.email, user_args.currency)
         result = deusto_pay.create_user( user )
-        return { 'Result' : result }, 201
+        return json.dumps({'Result' : result }), 201
 
 
 class Pay_MicroService_Update_Currency (Resource):
 
     # curl http://127.0.0.1:5000/Payments/Update_currency
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status' : 'Working'}), 201
 
     # curl http://127.0.0.1:5000/Payments/Update_currency -d '{"email":"inigo.lopezgazpio@deusto.es", "currency":"100"}' -X PUT -H "Content-Type: application/json" -v
     def put(self):
         user_args = user_parser.parse_args()
         result = deusto_pay.update_currency( user_args.email, user_args.currency )
-        return { 'Result' : result }, 201
+        return json.dumps({'Result' : result }), 201
 
 
 api.add_resource(MicroServices, '/')

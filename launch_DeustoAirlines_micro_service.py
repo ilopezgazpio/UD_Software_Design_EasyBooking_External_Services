@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-
 ###########################
 # IMPORTANT NOTE
 # INSTALL LIBRARIES:
@@ -23,6 +22,8 @@ from flask_restful import reqparse, abort, Api, Resource
 from src.main.python.Airlines.DeustoAirlines.DeustoAirlines import DeustoAirlines
 from src.main.python.Flight.Flight import Flight
 from src.main.python.Flight.Airport import Airport
+
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -58,14 +59,14 @@ class MicroServices(Resource):
 
     # curl http://127.0.0.1:5000/
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status': 'Working'}), 201
 
 
 class Airlines_MicroService_Search_Flights (Resource):
 
     # curl http://127.0.0.1:5000/Airlines/Search_Flights
     def get(self):
-        return {'Status': 'Working'}, 201
+        return json.dumps({'Status': 'Working'}), 201
 
     # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{ }' -X POST -H "Content-Type: application/json" -v
     # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia" }' -X POST -H "Content-Type: application/json" -v
