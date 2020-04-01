@@ -144,7 +144,7 @@ Delete user test message
 curl http://127.0.0.1:5000/Authentication/Delete_user
 
 Delete user
-curl http://127.0.0.1:5000/Authentication/Delete_user -d '{"email":"inigo.lopezgazpio@deusto.es", "password":"XXX" }' -X DELETE -H "Content-Type: application/json" -v
+curl http://127.0.0.1:5000/Authentication/Delete_user -d '{"email":"inigo.lopezgazpio@deusto.es", "password":"XXX" }' -X PUT -H "Content-Type: application/json" -v
 
 ```
 
@@ -197,22 +197,22 @@ user_parser.add_argument('currency', type=float, help= "Initial currency")
 #### Requests related to DeustoAirlines microservice
 ```
 Test message
-curl http://127.0.0.1:5000/Airlines/Search_Flights
+curl http://127.0.0.1:5002/Airlines/Search_Flights
 
 Search all flights
-curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{ }' -X POST -H "Content-Type: application/json" -v                                                                                                                              
+curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{ }' -X POST -H "Content-Type: application/json" -v                                                                                                                              
 
 Search flights by both: airport_departure_name and airport_arrival_name
-curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia" }' -X POST -H "Content-Type: application/json" -v                                                     
+curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia" }' -X POST -H "Content-Type: application/json" -v                                                     
 
 Search flights also by free seats available (At least XXX free seats)
-curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100" }' -X POST -H "Content-Type: application/json" -v                                 
+curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100" }' -X POST -H "Content-Type: application/json" -v                                 
     
 Search flights also by maximum price 
-curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700" }' -X POST -H "Content-Type: application/json" -v                  
+curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700" }' -X POST -H "Content-Type: application/json" -v                  
 
 Search flights also by proximity to departure date (between given date and given date + 10 days) 
-curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700", "departure_date":"2020/04/03 09:00:00" }' -X POST -H "Content-Type: application/json" -v   
+curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700", "departure_date":"2020/04/03 09:00:00" }' -X POST -H "Content-Type: application/json" -v   
 
 ```
 
@@ -235,7 +235,11 @@ To launch **Jersey_Auth_Client_Requests**:
 ```
 mvn clean
 mvn compile
-mvn exec:java -PXXX
+mvn exec:java -PJersey_Auth_Client_Requests
+
+or
+
+mvn clean compile exec:java -PJersey_Auth_Client_Requests
 ```
 
 To launch **Jersey_Pay_Client_Requests**:
