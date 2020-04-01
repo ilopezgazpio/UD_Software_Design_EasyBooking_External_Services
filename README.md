@@ -246,7 +246,12 @@ To launch **Jersey_Pay_Client_Requests**:
 ```
 mvn clean
 mvn compile
-mvn exec:java -PXXX
+mvn exec:java -PJersey_Pay_Client_Requests
+
+or 
+
+mvn clean compile exec:java -PJersey_Pay_Client_Requests
+
 ```
 
 To launch **Jersey_Airlines_Client_Requests**:
