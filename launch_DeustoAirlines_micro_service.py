@@ -42,6 +42,84 @@ print("...")
 print("Settinp-up DeustoAirlines Microservice")
 print("...")
 deusto_airlines = DeustoAirlines()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+deusto_airlines.generate_random_flight()
+
+
 print("Settinp-up DeustoAirlines Microservice [ OK ] ")
 
 
@@ -57,31 +135,27 @@ flight_parser.add_argument('departure_date', type=str, help= "String to be parse
 
 class MicroServices(Resource):
 
-    # curl http://127.0.0.1:5000/
+    # curl http://127.0.0.1:5002/
     def get(self):
-        return json.dumps({'Status': 'Working'}), 201
-
+        message = "Airlines Microservice working correctly"
+        return { 'Message' : message } , 201
 
 class Airlines_MicroService_Search_Flights (Resource):
 
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights
     def get(self):
-        return json.dumps({'Status': 'Working'}), 201
+        message = "/Airlines/Search_Flights Microservice working correctly"
+        return { 'Message' : message } , 201
 
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{ }' -X POST -H "Content-Type: application/json" -v
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia" }' -X POST -H "Content-Type: application/json" -v
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100" }' -X POST -H "Content-Type: application/json" -v
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700" }' -X POST -H "Content-Type: application/json" -v
-    # curl http://127.0.0.1:5000/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700", "departure_date":"2020/04/03 09:00:00" }' -X POST -H "Content-Type: application/json" -v
+
+    
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{ }' -X POST -H "Content-Type: application/json" -v
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia" }' -X POST -H "Content-Type: application/json" -v
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100" }' -X POST -H "Content-Type: application/json" -v
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700" }' -X POST -H "Content-Type: application/json" -v
+    # curl http://127.0.0.1:5002/Airlines/Search_Flights -d '{"airport_departure_name":"Hondarribia", "airport_arrival_name":"Tabarnia", "free_seats":"100", "price":"700", "departure_date":"2020/04/03 09:00:00" }' -X POST -H "Content-Type: application/json" -v
     def post(self):
         flight_args = flight_parser.parse_args()
-
-        deusto_airlines.generate_random_flight()
-        deusto_airlines.generate_random_flight()
-        deusto_airlines.generate_random_flight()
-        deusto_airlines.generate_random_flight()
-        deusto_airlines.generate_random_flight()
-
 
         result = deusto_airlines.search_flights(
             airport_departure_name = flight_args.airport_departure_name,
@@ -90,7 +164,9 @@ class Airlines_MicroService_Search_Flights (Resource):
             price                  = flight_args.price,
             departure_date         = flight_args.departure_date)
 
-        return deusto_airlines.toJSON(result), 201
+        json_result = deusto_airlines.toJSON(result)
+        print(json_result)
+        return json.loads(json_result) , 201
 
 
 
