@@ -64,6 +64,12 @@ class DeustoAirlines (Interface_Airlines):
             price = kwparams.get('price')
             departure_date = kwparams.get('departure_date')
 
+            if free_seats == 0:
+                total_seats = None
+
+            if price == 0:
+                price = None
+            
             if ( airport_departure_name is None and
                     airport_arrival_name is None and
                     free_seats is None and
@@ -92,6 +98,10 @@ class DeustoAirlines (Interface_Airlines):
             elif ( airport_departure_name is not None and
                    airport_arrival_name is not None ):
                 return self.search_flights_by_2(kwparams)
+            
+            else:
+                # if we are here OMG!
+                return list(self.__flights.values())    
         else:
             return list(self.__flights.values())
 
@@ -134,29 +144,10 @@ class DeustoAirlines (Interface_Airlines):
         return flight.get_free_seats() >= kwparams['free_seats']
 
 
-
-
-
-    """JSON related """
-    """def toJSON(self, flight_array):
-        json_string = ""
-
-        it = 0
-        json_string += "{"
-        for flight in flight_array:
-            json_string += jsonpickle.encode(flight, unpicklable=False)
-            if it < len(flight_array) - 1:
-                json_string += ","
-            it += 1
-        json_string += "}"
-
-        return json_string
-    """
     def toJSON(self, flight_array):
-
         result = jsonpickle.encode(flight_array, unpicklable=False)
         return result
-
+    
 
     """Flight related private methods"""
     def flight_exists(self, code):
@@ -191,7 +182,9 @@ class DeustoAirlines (Interface_Airlines):
 
     def generate_random_flight(self):
         a1 , a2 = random.sample( list (self.__airports.values() ), k = 2)
-        flight = Flight("DA" + str(random.randint(1, 9999)), a1, a2,
+        flight = Flight("DA" + str(random.randint(1, 9999)),
+                        Airport(a1.get_code(), a1.get_city()),
+                        Airport(a2.get_code(), a2.get_city()),
                         random.randint(50,150),
                         random.randint(100, 800),
                         datetime.now() + timedelta(days=random.randint(0, 40) , hours = random.randint(0, 23), minutes = random.randint(0, 59)))

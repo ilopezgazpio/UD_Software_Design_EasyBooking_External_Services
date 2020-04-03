@@ -21,6 +21,20 @@ public class Flight_parameters implements DF_Printable
         this.airport_arrival_name = airport_arrival_name;
     }
 
+    public Flight_parameters(String airport_departure_name, String airport_arrival_name, int free_seats) {
+        this.airport_departure_name = airport_departure_name;
+        this.airport_arrival_name = airport_arrival_name;
+        this.free_seats = free_seats;
+    }
+
+
+    public Flight_parameters(String airport_departure_name, String airport_arrival_name, int free_seats, double price) {
+        this.airport_departure_name = airport_departure_name;
+        this.airport_arrival_name = airport_arrival_name;
+        this.free_seats = free_seats;
+        this.price = price;
+    }
+
     public Flight_parameters(String airport_departure_name, String airport_arrival_name, int free_seats, double price, String departure_date) {
         this.airport_departure_name = airport_departure_name;
         this.airport_arrival_name = airport_arrival_name;
