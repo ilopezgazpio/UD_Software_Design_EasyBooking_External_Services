@@ -105,7 +105,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <server.hostname>127.0.0.1</server.hostname>
+        <server.hostname>rasp-prog-ss-1.deusto.es</server.hostname>
         <server.port.auth>5000</server.port.auth>
         <server.port.pay>5001</server.port.pay>
         <server.port.airlines>5002</server.port.airlines>
